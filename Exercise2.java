@@ -165,7 +165,93 @@ class Exercise2_15 {
      }
 }
 class Exercise2_16 {
-    public static void main(String[] args) {
-        
+        public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("请输入六边形的边长：" );
+        double s = input.nextDouble();
+        double p = 1.5*(Math.pow(3,0.5))*s*s;
+        System.out.println("六边形的体积为： " + p);
+    }
+}
+class Exercise2_17 {
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("请输入-58度至41度之间的度数以及风速:");
+        double t = input.nextDouble();
+        double v = input.nextDouble();
+        double T = 35.74 + 0.6215*t -35.75*Math.pow(v,0.16) + 0.4275*t*Math.pow(v,0.16);
+        System.out.println("风寒温度为: " + T);
+    }
+}
+class Exercise2_18 {
+     public static void main(String[] args)
+    {
+        int k =0;
+        for(float i=1;i<=5;i++)
+        {
+            System.out.printf("%-3d %-3d %-3d",(int)i,(int)(i+1),(int)Math.pow(i,i+1));
+            if(k%3==0)
+            {
+                System.out.println();
+            }
+        }
+    }
+}
+class Exercise2_19 {
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+         System.out.println("请输入三角形的三个点:");
+        double x1 =input.nextDouble();
+        double y1 =input.nextDouble();
+        double x2 =input.nextDouble();
+        double y2 =input.nextDouble();
+        double x3 =input.nextDouble();
+        double y3 =input.nextDouble();
+        double s,a1,b1,c1,p ;
+        a1 = Math.pow(Math.pow(x2-x1,2)+Math.pow(y2-y1,2),0.5);
+        b1 = Math.pow(Math.pow(x3-x1,2)+Math.pow(y3-y1,2),0.5);
+        c1 = Math.pow(Math.pow(x2-x3,2)+Math.pow(y2-y3,2),0.5);
+        s = (a1+b1+c1)/2;
+        p = Math.pow(s*(s-a1)*(s-b1)*(s-c1),0.5);
+        System.out.println("该三角形的面积为:"+p);
+    }
+}
+class Exercise2_20 {
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("请输入收支余额和年利率: " );
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double s;
+        s = a * (b/1200);
+        System.out.println("下月利息为: " + s);
+    }
+}
+class Exercise2_21 {
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("请输入投资金额,年利率以及年数:");
+        double a = input.nextDouble(); 
+        double b = input.nextDouble();
+        int year = input.nextInt();
+        double s = a*Math.pow(1+b/(100*12),year*12);
+        System.out.println("未来的投资金额是:" + s);
+    }
+}
+class Exercise2_23 {
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+         System.out.println("请输入驾驶距离,汽车每加仑多少英里以及每加仑的价格:");
+        double distance = input.nextDouble();
+        double out = input.nextDouble();
+        double price = input.nextDouble();
+        double s = distance/out*price;
+        System.out.println("旅程的费用为:"+s);
     }
 }

@@ -334,6 +334,136 @@ class Exercise3_24 {
 }
 class Exercise3_25 {
     public static void main(String[] args) {
-        
+        System.out.println("Enter x1,y1,x2,y2,x3,y3,x4,y4 :");
+        Scanner input = new Scanner(System.in);
+        double x1 = input.nextDouble();
+        double y1 = input.nextDouble();
+        double x2 = input.nextDouble();
+        double y2 = input.nextDouble();
+        double x3 = input.nextDouble();
+        double y3 = input.nextDouble();
+        double x4 = input.nextDouble();
+        double y4 = input.nextDouble();
+        double x,y;
+        double a,b,c,d,e,f;
+        a = y1-y2;
+        b = x2-x1;
+        c = y3-y4;
+        d = x4-x3;
+        e = (y1-y2)*x1-(x1-x2)*y1;
+        f = (y3-y4)*x3-(x3-x4)*y3;
+        if((y2-y1)/(x2-x1) != (y4-y3)/(x4-x3)) {
+            x = (e*d-b*f)/(a*d-b*c);
+            y = (a*f-e*c)/(a*d-b*c);
+            System.out.println("x=" + x + "," + "y="+y);
+        }
+        else
+        System.out.println("两条直线平行,没有交点!");
     }
 }
+class Exercise3_26 {
+   public static void main(String[] args) {
+       int num;
+       Scanner input = new Scanner(System.in);
+       num = input.nextInt();
+       if(num%5 == 0 && num%6 == 0)
+           System.out.println("该数能被5和6整除!");
+       else if(num%5 == 0 || num%6 == 0)
+           System.out.println("该数能被5或6整除!");
+       else if ((num%5 == 0 || num%6 == 0) && (num%5 == 0 && num%6 == 0))
+       System.out.println("该数能被5或6整除,但不能被他们同时整除!");     
+   }
+}
+class Exercise3_27 {
+    public static void main(String[] args) {
+        System.out.println("请输入 (x,y) :");
+        Scanner input = new Scanner(System.in);
+        double x = input.nextDouble();
+        double y = input.nextDouble();
+        if(x>0 && x<200) {
+        
+            if(y>0 && y<100) {
+            
+                if(2*y+x-200<0)
+                   System.out.println("该点在三角形内!");
+                else
+                    System.out.println("该点不在三角形内!");
+               }
+            else
+                System.out.println("该点不在三角形内!");
+        }
+      else
+           System.out.println("该点不在三角形内!"); 
+    }
+}
+class Exercise3_28 {
+    public static void main(String[] args) {
+        System.out.println("输入第一个矩形中点的x和y :");
+        Scanner input = new Scanner(System.in);
+        double x1 = input.nextDouble();
+        double y1 = input.nextDouble();
+        double w1 = input.nextDouble();
+        double h1= input.nextDouble(); 
+        System.out.println("输入第二个矩形中点的x和y :");
+        double x2 = input.nextDouble();
+        double y2 = input.nextDouble();
+        double w2 = input.nextDouble();
+        double h2= input.nextDouble();
+        double p = Math.pow(Math.pow(y2-y1,2),0.5);
+        double q = Math.pow(Math.pow(x2-x1,2),0.5);
+        if(q<(w1-w2)/2 && p<(h1-h2)/2) {
+            System.out.println(" 第二个矩形在第一个内! ");
+        } 
+        else if(q>(w1-w2)/2&&q<(w1+w2)/2&&p>(h1-h2)/2&&p<(h1+h2)/2){
+            System.out.println("两矩形重叠! ");
+        }
+        else{
+            System.out.println("两矩形不重叠! ");
+        }
+    }
+}
+class Exercise3_29 {
+    public static void main(String[] args){
+        System.out.println("请输入第一个圆的圆心坐标和半径 :");
+        Scanner input = new Scanner(System.in);
+        double x1 = input.nextDouble();
+        double y1 = input.nextDouble();
+        double r1 = input.nextDouble();
+        System.out.println("请输入第二个圆的圆心坐标和半径 :");
+        double x2 = input.nextDouble();
+        double y2 = input.nextDouble();
+        double r2 = input.nextDouble();
+        double s = Math.pow(Math.pow(x2-x1,2)+Math.pow(y2-y1,2),0.5);
+        if(s<Math.pow(Math.pow(r2-r1,2),0.5)){
+            System.out.println("第二个圆在第一个圆内!");
+        }
+        else if(s<r1+r2){
+            System.out.println("两个圆重叠!");
+        }
+        else
+            System.out.println("两个圆不重叠!");
+    }
+}
+class Exercise3_31 {
+    public static void main(String[] args){
+        System.out.println("Enter the exchange rate from dollars to RMB : ");
+        Scanner input = new Scanner(System.in);
+        double t = input.nextDouble();
+        System.out.println("Enter 0 to convert dollars to RMB and 1 vice versa : ");
+        int num = input.nextInt();
+        System.out.println("Enter the dollars amount : ");
+        double dollars = input.nextDouble();
+        double s;
+        if(num == 1){
+            s = dollars*t;
+            System.out.println("$" + dollars + " is " + s + " yuan");
+        }
+        else if(num ==0){
+            s = dollars/t;
+            System.out.println( dollars + " yuan" + " is " + "$" + s );
+        }
+        else
+            System.out.println( "Incorrect input");
+    }
+}
+
