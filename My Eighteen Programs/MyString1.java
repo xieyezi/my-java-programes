@@ -1,98 +1,62 @@
 package io.github.xieyezi;
 
-public class MyString1 {
-	public static void main(String[] args) {
-		String a = "adhvb";
-		char[] s = { 'a', 'b', 'c' };
-		MyString1 d = new MyString1(a);
-		System.out.println("将AGdFa 转成小写的字母"+d.toLowerCase().c);
-		MyString1 str = new MyString1(s);
-		d.charAt(1);
-		str.charAt(2);
-		System.out.print("输出字符数组的第3个字符 "+str.charAt(2) + " " + "输出字符串的第二个字符 "+d.charAt(1));
-		MyString1 f=new MyString1();
-		System.out.println("输出从下标0到下标2的字符串 ："+a.substring(0,2));
-		System.out.print("字符长度  "+f.length1());
-     
-	}
+import java.util.Arrays;
 
-	public String c = "AGdFa";
-	public MyString1(String c) {
-		this.c = c;
-	}
+public class MyString1 { 
+	public char value[] ;
 	public MyString1()
-	{
-		
+	{	
+	}
+	public MyString1(String str) {
+		this.value = str.toCharArray();
 	}
 	public MyString1(char[] chars) {
-		for (int i = 0; i < chars.length; i++)
-			c += chars[i];
-
+		this.value = chars;
 	}
-
+	String getStr() {
+		return this.value.toString();
+	}
 	public char charAt(int a) {
-		char ch = c.charAt(a);
-		return ch;
+		return (char)(a+'0');
 	}
-
-	public int length1() {
-		int a=c.length();
-		return a;
+	public int length() {      
+        return this.value.length;
 	}
-
-	String getC() {
-		return c;
+	public MyString1 substring(int begin, int end) {			
+		return new MyString1(Arrays.copyOfRange(this.value, begin, end));
 	}
-
-	public MyString1 substring(int begin, int end) {
-		String s = "";
-		
-		char ch;
-		int a = begin ;
-		int b = end;
-		for (; a < b ; a++) {
-			ch = c.charAt(a);
-			s += ch;
-		}
-		
-		MyString1 d = new MyString1(s);
-		return d;
-
-	}
-
 	public MyString1 toLowerCase() {
-		String str = c;
-		String str1 = "";
-		char ch1;
-		int a = str.length();
-		for (int i = 0; i < a; i++) {
-			char ch = str.charAt(i);
-			if (ch < 'a') {
-				ch1 = (char)(ch +32);
-				str1 += ch1;
-			} else
-				str1 += ch;
+		char[] Arr2 = new char[value.length];
+		for(int i = 0;i<this.value.length;i++){
+			Arr2[i] = Character.toLowerCase(value[i]);
 		}
-		MyString1 c = new MyString1(str1);
-		return c;
-
+		return new MyString1(Arr2);
 	}
-
-	
-
 	public boolean equals(MyString1 s) {
-
-		if (c == s.getC())
-			return true;
-		else
-			return false;
+		int n = s.value.length;
+		if(s.value.length == this.value.length){
+			 int i = 0;
+             while (n-- != 0) {
+                 if (this.value[i] != s.value[i])
+                     return false;
+                 i++;
+             }
+             return true;
+         }
+		return false;
 	}
-
+	
 	public static MyString1 ValueOf(int i) {
-		String s = "";
-		s += i;
-		MyString1 c = new MyString1(s);
-		return c;
-
+		return new MyString1(Integer.toString(i));
+	}
+	public static void main(String[] args) {
+		char[] arr = {'A','b','c','d'};
+		MyString1 s = new MyString1(arr);
+		System.out.println(s.value);
+		System.out.println(s.length());
+		MyString1 s1 = s.substring(0, 2);
+		System.out.println(s1.value);
+		System.out.println(s.toLowerCase());
+		System.out.println(MyString1.ValueOf(34));
 	}
 }
