@@ -8,14 +8,12 @@ import java.util.Random;
 public class Maze
 {
 
-	private int width = 0;   //迷宫的宽度
-	private int height = 0;  //迷宫的高度
-	private Random random = new Random(); //用于生成迷宫时随机访问一个单元格的相邻的一个格子
+	private int width = 40;   //迷宫的宽度
+	private int height = 40;  //迷宫的高度
+	private Random random = new Random(); //用于生成迷宫时随机访问一个点的相邻的一个点
 
 	public Maze()
 	{
-		this.width = 40;// 迷宫宽度
-		this.height = 40;// 迷宫高度
 	}
 	public int getWidth()
 	{
@@ -42,7 +40,7 @@ public class Maze
 		this.width = width;
 		this.height = height;
 	}
-//以下方法是从列表里面取出每一个cell的对象
+//以下方法是从列表里面取出每一个MazePoint的对象
 	public ArrayList<mazePoint> getMaze()
 	{
 		ArrayList<mazePoint> maze = new ArrayList<mazePoint>();
