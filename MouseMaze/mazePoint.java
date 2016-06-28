@@ -1,18 +1,18 @@
-package io.github.xieyezi;
-/*
- 用mazePoint类来表示迷宫里面的每一个点
- */
+package cn.edud;
+
 public class mazePoint
 {
-	//“0”表示有墙，“1”表示无墙
-	private int left = 0;   //点的左边属性
-	private int right = 0; //点的右边属性
-	private int up = 0;    //点的上边属性
-	private int down = 0;  //点的底边属性
-	//迷宫中的坐标
+	// “0”表示有墙，“1”表示无墙
+	private int left = 0;
+	private int right = 0;
+	private int up = 0;
+	private int down = 0;
+	// 迷宫中的坐标
 	private int x;
 	private int y;
-	public boolean visted = false; //点的访问标记
+	public boolean visted;
+	// 周围空白墙壁的数量
+	private int direction = 0;
 
 	public mazePoint(int x, int y)
 	{
@@ -60,6 +60,26 @@ public class mazePoint
 		this.down = 1;
 	}
 
+	public void setLeft(int left)
+	{
+		this.left = left;
+	}
+
+	public void setRight(int right)
+	{
+		this.right = right;
+	}
+
+	public void setUp(int up)
+	{
+		this.up = up;
+	}
+
+	public void setDown(int down)
+	{
+		this.down = down;
+	}
+
 	public int getX()
 	{
 		return x;
@@ -80,4 +100,20 @@ public class mazePoint
 		this.y = y;
 	}
 
+	public int getDirection()
+	{
+		return direction;
+	}
+
+	public void setDirection()
+	{
+		if (this.up == 1)
+			this.direction++;
+		if (this.right == 1)
+			this.direction++;
+		if (this.down == 1)
+			this.direction++;
+		if (this.left == 1)
+			this.direction++;
+	}
 }

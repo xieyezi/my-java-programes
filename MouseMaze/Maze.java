@@ -1,26 +1,25 @@
-package io.github.xieyezi;
+package cn.edud;
 
 import java.util.ArrayList;
 import java.util.Random;
-/*
- 用maze类来表示一个迷宫的属性
- */
+
 public class Maze
 {
 
-	private int width = 40;   //迷宫的宽度
-	private int height = 40;  //迷宫的高度
-	private Random random = new Random(); //用于生成迷宫时随机访问一个点的相邻的一个点
+	private int width = 40;// 迷宫宽度
+	private int height = 40;// 迷宫高度
+	private Random rnd = new Random();
 
 	public Maze()
 	{
+		
 	}
 	public int getWidth()
 	{
 		return width;
 	}
 
-	public void setWidth(int width) 
+	public void setWidth(int width)
 	{
 		this.width = width;
 	}
@@ -37,10 +36,11 @@ public class Maze
 
 	public Maze(int width, int height)
 	{
+		super();
 		this.width = width;
 		this.height = height;
 	}
-//以下方法是从列表里面取出每一个MazePoint的对象
+
 	public ArrayList<mazePoint> getMaze()
 	{
 		ArrayList<mazePoint> maze = new ArrayList<mazePoint>();
@@ -54,7 +54,7 @@ public class Maze
 		}
 		return CreateMaze(maze);
 	}
-//以下方法是建造迷宫的方法
+
 	private ArrayList<mazePoint> CreateMaze(ArrayList<mazePoint> maze)
 	{
 		int top = 0;
@@ -64,17 +64,18 @@ public class Maze
 		team.add(maze.get(x + y * width));
 		while (top >= 0)
 		{
-			int[] val = new int[]{ -1, -1, -1, -1 };
+			int[] val = new int[]
+			{ -1, -1, -1, -1 };
 			int times = 0;
 			boolean flag = false;
 			mazePoint pt = (mazePoint) team.get(top);
 			x = pt.getX();
 			y = pt.getY();
-			pt.visted = true;
+			pt.visted = true;// 记录单元格已访问
 
 			ro1: while (times < 4)
 			{
-				int dir = random.nextInt(4);
+				int dir = rnd.nextInt(4);
 				if (val[dir] == dir)
 					continue;
 				else
@@ -85,7 +86,7 @@ public class Maze
 				case 0: // 左边
 					if ((x - 1) >= 0 && maze.get(x - 1 + y * width).visted == false)
 					{
-						if(x==0&&y==0||x==width&&y==height)
+						if (x == 0 && y == 0 || x == width && y == height)
 						{
 							top++;
 							flag = true;
@@ -135,7 +136,7 @@ public class Maze
 					}
 					break;
 				}
-				times ++;
+				times++;
 			}
 			if (!flag)
 			{
@@ -144,6 +145,13 @@ public class Maze
 			}
 
 		}
+		int t = 0;
+		while (t<maze.size())
+		{
+			maze.get(t).setDirection();
+			t++;
+		}
 		return maze;
 	}
+
 }
